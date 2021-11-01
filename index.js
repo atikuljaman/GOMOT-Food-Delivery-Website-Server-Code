@@ -42,7 +42,6 @@ async function run() {
         app.get('/blogs', async (req, res) => {
             const cursor = blogsCollection.find({});
             const result = await cursor.toArray();
-            console.log(result);
             res.send(result)
         })
 
@@ -54,16 +53,23 @@ async function run() {
             res.send(foodItem)
         })
 
-        // POST API
+        // POST FOODS API
         app.post('/foods', async (req, res) => {
             const result = await foodsCollection.insertOne(req.body);
             console.log(result);
             res.send(result)
         })
 
-        // POST API
+        // POST PLACED ORDER API
         app.post('/placedOrder', async (req, res) => {
-            const result = await orderCollection.insertOne(req.body)
+            const result = await orderCollection.insertOne(req.body);
+            res.send(result)
+        })
+
+        // POST BLOGS API
+        app.post('/blogs', async (req, res) => {
+            const result = await blogsCollection.insertOne(req.body);
+            console.log(result);
             res.send(result)
         })
 
