@@ -84,7 +84,7 @@ async function run() {
 
             const result = await orderCollection.updateOne(query, updateDoc);
             res.send(result)
-        })
+        });
 
         // UPDATE BLOGS APPROVE STATUS
         app.put('/blogs/:id', async (req, res) => {
@@ -98,21 +98,21 @@ async function run() {
 
             const result = await blogsCollection.updateOne(query, updateDoc);
             res.send(result)
-        })
+        });
 
         // DELETE API
         app.delete('/placedOrder/:id', async (req, res) => {
             const query = { _id: ObjectId(req.params.id) }
             const result = await orderCollection.deleteOne(query)
             res.send(result)
-        })
+        });
 
         // DELETE BLOG API
         app.delete('/blogs/:id', async (req, res) => {
             const query = { _id: ObjectId(req.params.id) }
             const result = await blogsCollection.deleteOne(query)
             res.send(result)
-        })
+        });
 
     } finally {
         //await client.close();
