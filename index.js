@@ -72,7 +72,7 @@ async function run() {
         })
 
 
-        // UPDATE APPROVE STATUS 
+        // UPDATE PLACED ORDER APPROVE STATUS 
         app.put('/placedOrder/:id', async (req, res) => {
             const query = { _id: ObjectId(req.params.id) }
             const updateOrderStatus = req.body;
@@ -83,6 +83,20 @@ async function run() {
             };
 
             const result = await orderCollection.updateOne(query, updateDoc);
+            res.send(result)
+        })
+
+        // UPDATE BLOGS APPROVE STATUS
+        app.put('/blogs/:id', async (req, res) => {
+            const query = { _id: ObjectId(req.params.id) }
+            const updateBlogStatus = req.body;
+            const updateDoc = {
+                $set: {
+                    status: updateBlogStatus.status
+                }
+            };
+
+            const result = await blogsCollection.updateOne(query, updateDoc);
             res.send(result)
         })
 
