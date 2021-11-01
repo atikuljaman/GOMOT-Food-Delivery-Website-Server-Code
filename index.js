@@ -93,6 +93,13 @@ async function run() {
             res.send(result)
         })
 
+        // DELETE BLOG API
+        app.delete('/blogs/:id', async (req, res) => {
+            const query = { _id: ObjectId(req.params.id) }
+            const result = await orderCollection.deleteOne(query)
+            res.send(result)
+        })
+
     } finally {
         //await client.close();
     }
