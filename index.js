@@ -56,7 +56,6 @@ async function run() {
         // POST FOODS API
         app.post('/foods', async (req, res) => {
             const result = await foodsCollection.insertOne(req.body);
-            console.log(result);
             res.send(result)
         })
 
@@ -69,7 +68,6 @@ async function run() {
         // POST BLOGS API
         app.post('/blogs', async (req, res) => {
             const result = await blogsCollection.insertOne(req.body);
-            console.log(result);
             res.send(result)
         })
 
@@ -85,7 +83,6 @@ async function run() {
             };
 
             const result = await orderCollection.updateOne(query, updateDoc);
-            console.log(result);
             res.send(result)
         })
 
