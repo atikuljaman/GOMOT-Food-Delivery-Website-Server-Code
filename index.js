@@ -22,18 +22,27 @@ async function run() {
         const database = client.db("assignment10");
         const foodsCollection = database.collection("foods");
         const orderCollection = database.collection("orders");
+        const blogsCollection = database.collection("blogs");
 
-        // GET API 
+        // GET FOODS API 
         app.get('/foods', async (req, res) => {
             const cursor = foodsCollection.find({});
             const result = await cursor.toArray();
             res.send(result)
         })
 
-        // GET APi
+        // GET PLACE ORDER API
         app.get('/placedOrder', async (req, res) => {
             const cursor = orderCollection.find({});
             const result = await cursor.toArray();
+            res.send(result)
+        })
+
+        // GET BLOGS API
+        app.get('/blogs', async (req, res) => {
+            const cursor = blogsCollection.find({});
+            const result = await cursor.toArray();
+            console.log(result);
             res.send(result)
         })
 
